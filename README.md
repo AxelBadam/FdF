@@ -10,4 +10,4 @@ This project is about creating a simple wireframe model representation of a 3D l
 
 -```make``` the program
 
--run ```./fdf ``` with one of the test maps provided
+-run ```./fdf test_maps/``` with one of the test maps provided
