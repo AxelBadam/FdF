@@ -1,31 +1,36 @@
-SRC = main.c draw.c init.c read_map.c util.c util2.c controls.c atoi_base.c \
-rotate.c draw_util.c util3.c mouse.c errors_free.c
-OBJ = $(SRC:.c=.o)
-CC_FLAGS = -Wall -Wextra -Werror -g
-CC = cc
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 NAME = fdf
-LIBFT = libft/libft.a
+SRC = main.c controls.c controls_2.c draw.c free.c ft_atoi_base.c init.c parsing.c projection.c rotate.c utils.c
+LIBFT = libft
+MINILIBX = minilibx_macos
+OBJECT = $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I.
+RM = rm -f
+OBJDIR = obj
+SRCDIR = src
 
-all: $(NAME)
-
-$(LIBFT):
-	make -C libft
-
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CC_FLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT) -o $@
-
-%.o: %.c 
-	$(CC) $(CC_FLAGS) -c $<
+all: obj $(OBJDIR) $(NAME)
 
 bonus: all
 
-clean:
-	rm -rf $(OBJ)
-	make -C libft clean
+obj:
+	mkdir -p $(OBJDIR)
 
-fclean:	clean
-	rm -rf $(NAME)	
-	make -C libft fclean
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@make -s -C $(MINILIBX)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJECT)
+	@make -s -C $(LIBFT)
+	$(CC) $(OBJECT) -framework AppKit -framework OpenGL $(LIBFT)/libft.a $(MINILIBX)/libmlx.a -o $(NAME)
+
+clean:
+	rm -rf $(OBJDIR)
+	make clean -C $(LIBFT)
+	make clean -C $(MINILIBX)
+
+fclean: clean
+	$(RM) $(NAME)
+	make fclean -C $(LIBFT)
 
 re: fclean all
