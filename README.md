@@ -4,6 +4,8 @@ This project is about creating a simple wireframe model representation of a 3D l
 
 ## How to run
 
+You'll need to have minilibX installed on your machine if you want to run this. 
+
 -```make``` the program
 
 -run ```./fdf ``` with one of the test maps provided
