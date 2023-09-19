@@ -1,5 +1,6 @@
 NAME = fdf
-SRC = main.c controls.c controls_2.c draw.c free.c ft_atoi_base.c init.c parsing.c projection.c rotate.c utils.c
+SRC = main.c draw.c init.c read_map.c util.c util2.c controls.c atoi_base.c \
+rotate.c draw_util.c util3.c mouse.c errors_free.c
 LIBFT = libft
 MINILIBX = minilibx_macos
 OBJECT = $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
