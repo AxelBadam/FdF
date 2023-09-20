@@ -9,6 +9,6 @@ This project is about creating a simple wireframe model representation of a 3D l
 
 ## How to run
 
--```make``` the program
+-```make``` the program (the graphics library 'minilibx' for macOS is included in this repo)
 
 -run ```./fdf test_maps/``` with one of the test maps provided
